@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+
+	<title>Navigation</title>
+<script language="JavaScript">
+<!--
+//store a bunch of information about the pages
+live = new navObj("on",new Array("pylons.html","battery_operated.html","electrical_house.html","generator.html"),"on");
+neutral = new navObj("on",new Array("light_switch.html","plug_it_in.html","nuclear_plant.html","patch_board.html"),"on");
+
+earth = new navObj("on",new Array("animation.html","record_player.html","telegraph.html","trucks.html"),"on");
+
+plug = new navObj("off","none","off");
+extension = new navObj("on","none","off");
+
+
+currentObj = plug;
+
+function navObj(plugState,linkArr,extState){
+   this.plugState = plugState;
+   this.linkArr = linkArr;
+   this.extensionState = extState
+}
+
+function doNav(whichOne){
+//alert(whichOne);
+}
+
+function chngImg(whichName){
+theImg = document.images[whichName];
+if(theImg.src.indexOf("images/space.gif")==-1){
+// Gets the string from the beginning to the ".gif" part
+theState  = theImg.src.substr(0,theImg.src.indexOf(".gif"));
+   if(theState.indexOf('_on')!=-1){
+      //its already on, so take off the "_on" bit
+      theImg.src = theState.substr(0,theState.indexOf("_on")) + ".gif";
+   }else{
+      //add "_on.gif" to turn it on
+      theImg.src = theState + "_on.gif";
+   }
+}
+}
+
+function getLink(num){
+   if(currentObj.linkArr!="none"){
+      parent.main.location = currentObj.linkArr[num-1];
+   }
+}
+
+function plugIt(){
+   currentObj = plug;
+   parent.main.location = "plug.html";
+   setup();
+}
+
+function setup(){
+   if(currentObj.plugState=="on"){
+     document.images.plug.src = "images/plug.gif";
+   }else{
+     document.images.plug.src = "images/space.gif";
+   }
+   if(currentObj.extensionState=="on"){
+     document.images.plug1.src = "images/extension_plug.gif";
+	 document.images.plug2.src = "images/extension_plug.gif";
+	 document.images.plug3.src = "images/extension_plug.gif";
+	 document.images.plug4.src = "images/extension_plug.gif";
+	 document.images.extStart.src = "images/extension_start.gif";
+	 document.images.extInd.src = "images/extension1.gif";
+   }else{
+     document.images.plug1.src = "images/space.gif";
+	 document.images.plug2.src = "images/space.gif";
+	 document.images.plug3.src = "images/space.gif";
+	 document.images.plug4.src = "images/space.gif";
+	 document.images.extStart.src = "images/space.gif";
+	 document.images.extInd.src = "images/space.gif";
+   }
+}
+
+//-->
+</script>
+</head>
+
+<body bgcolor="white" onLoad = "setup();">
+<div align="center"><img src="images/left.gif" width="37" height="44"><a href="javascript:plugIt();" onMouseover="chngImg('plug','on')" onMouseOut = "chngImg('plug','off')" onFocus="blur();"><img src="images/space.gif" width=25 height=44 name="plug" border=0 alt=""></a><img src="images/space.gif" width="18" height="44"><img src="images/space.gif" width="17" height="44" name="extInd"><img src="images/space.gif" width="19" height="44" name="extStart"><a href="javascript:getLink(1)" onMouseover="chngImg('plug1','on')" onMouseOut = "chngImg('plug1','off')" onFocus="blur();"><img src="images/space.gif" width="23" height="44" name="plug1" border=0></a><a href="javascript:getLink(2)" onMouseover="chngImg('plug2','on')" onMouseOut = "chngImg('plug2','off')" onFocus="blur();"><img src="images/space.gif" width="23" height="44" name="plug2" border="0"></a><a href="javascript:getLink(3)" onMouseover="chngImg('plug3','on')" onMouseOut = "chngImg('plug3','off')" onFocus="blur();"><img src="images/space.gif" width="23" height="44" name="plug3" border="0"></a><a href="javascript:getLink(4)" onMouseover="chngImg('plug4','on')" onMouseOut = "chngImg('plug4','off')" onFocus="blur();"><img src="images/space.gif" width="23" height="44" name="plug4" border="0"></a><img src="images/space.gif" width="251" height="44" name='friendchip'><a href="http://www.friendchip.com" onMouseover="document.images['friendchip'].src = 'images/site_by_over.gif'" onMouseOut = "document.images['friendchip'].src = 'images/space.gif'" onFocus="blur();" target="_top"><img src="images/13amp.gif" width="110" height="44" border=0></a><img src="images/right.gif" width="31" height="44"></div>
+<object classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://fpdownload.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=4,0,0,0" width="600" height="400" id="drone" align="middle">
+<param name="allowScriptAccess" value="sameDomain">
+<param name="movie" value="drone.swf">
+<param name="quality" value="high">
+<param name="bgcolor" value="#FFFFFF">
+<embed src="drone.swf" quality="high" bgcolor="#FFFFFF" width="600" height="400" name="drone" align="middle" allowScriptAccess="sameDomain" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer">
+</object>
+
+</body>
+</html>

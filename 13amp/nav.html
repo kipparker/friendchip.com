@@ -1,0 +1,179 @@
+<html>
+<head>
+<script language="JavaScript">
+<!--
+function switchSection(whichOne){
+   for(i=0;i<sections.length;i++){
+      layersArr[sections[i]].visibility = "hidden";
+   }
+   for(i=0;i<whichOne.length;i++){
+      layersArr[whichOne[i]].visibility = "visible";
+   }
+}
+
+function getPage(whichOne, index){
+   parent.main.location = whichOne[index];
+}
+
+
+grid12 = new Array("12grid/pylons.html", "12grid/battery_operated.html", "12grid/generator.html", "12grid/light_switch.html", "12grid/nuclear_plant.html", "12grid/record_player.html", "12grid/trucks.html", "12grid/telegraph.html", "12grid/animation.html", "12grid/electrical_house.html", "12grid/patch_board.html", "12grid/plug_it_in.html");
+
+grid8 = new Array("8grid/light_switch.html", "8grid/long_lead.html", "8grid/nitelite.html", "8grid/pachinko.html", "8grid/annoyothiser.html", "8grid/extension.html", "8grid/grid.html", "8grid/hi-rises.html");
+
+three = new Array("three/threaded.php3", "three/download.html");
+
+startWidth = new Array();
+
+
+function getPage(theArr,index){
+   parent.main.location = theArr[index];
+}
+
+//this is used to pick up which section its in
+names = new Array('plug.html', 'sections.html', '12grid','8grid','three');
+//an associated array of their associated layers
+
+//on plug, show only the background
+//on sections, show plug and extension
+//on particular piece, show plug, extension and its own navigation
+//couldn't think of anything approaching a clever way of doing this
+namesLayers = new Array();
+namesLayers[0] = new Array('bg');
+namesLayers[1] = new Array('bg','plug','extension');
+namesLayers[2] = new Array('bg','plug','extension', 'one');
+namesLayers[3] = new Array('bg','plug','extension', 'two');
+namesLayers[4] = new Array('bg','plug','extension', 'three');
+
+//keeps a record of what my layer names are.
+sections = new Array('bg', 'plug','extension','one','two','three');
+
+function showPage(){
+for(i=0;i<names.length;i++){
+   if(parent.main.location.href.indexOf(names[i])!=-1){
+	  //document.forms[0].showIt.value = names[i];
+	  switchSection(namesLayers[i]);
+   }
+}
+}
+
+
+layersArr = new Array(6);
+function setUp(){
+if(document.layers){
+    layersArr['bg'] = document.layers['bg'];
+    layersArr['plug'] = document.layers['plug'];
+	layersArr['extension'] = document.layers['extension'];
+	layersArr['one'] = document.layers['one'];
+	layersArr['two'] = document.layers['two'];
+	layersArr['three'] = document.layers['three'];
+}else if(document.getElementById){
+    layersArr['bg'] = document.getElementById('bg').style;
+    layersArr['plug'] = document.getElementById('plug').style;
+	layersArr['extension'] = document.getElementById('extension').style;
+	layersArr['one'] = document.getElementById('one').style;
+	layersArr['two'] = document.getElementById('two').style;
+	layersArr['three'] = document.getElementById('three').style;
+	//layersArr.length = 5;
+}else if(document.all){
+    layersArr['bg'] = bg.style;
+    layersArr['plug'] = plug.style;
+	layersArr['extension'] = extension.style;
+	layersArr['one'] = one.style;
+	layersArr['two'] = two.style;
+	layersArr['three'] = three.style;
+}else{
+   alert("Sorry, but you'll need to upgrade your browser to use this site");
+}
+setWidth();
+setInterval("showPage()",250);
+}
+
+
+tWidth = 600;
+
+function setWidth(){
+if(startWidth.length==0){
+   for(i=0;i<sections.length;i++){
+      startWidth[i] = parseInt(layersArr[sections[i]].left);
+   }
+}
+wScreen = document.images['w'].width;
+lPoint = wScreen/2 - tWidth/2;
+for(i=0;i<sections.length;i++){
+   layersArr[sections[i]].left = parseInt(startWidth[i])+lPoint;
+}
+}
+
+preArr = new Array("images/nav/background.gif", "images/nav/plug.gif", "images/nav/first_extension.gif", "images/nav/12_grid.gif", "images/nav/8_grid.gif", "images/nav/last_three.gif", "images/spacer.gif");
+tmpArr = new Array();
+for(i=0;i<preArr.length;i++){
+    tmpArr[i] = new Image();
+	tmpArr[i].src = preArr[i];
+}
+
+function chngImg(n,s){
+   document.images[n].src = s;
+}
+//-->
+</script>
+
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+</head>
+<body bgcolor="#FFFFFF" onLoad = "setUp()" onResize = "setWidth();">
+  <div id="bg" style="position:absolute; width:600; height:46; z-index:1; left: 0; top: 0px; visibility: visible"><nobr><img src="images/nav/background.gif" width=480 height=46 border=0 alt=""><img src="images/nav/13amp.gif" width=110 height=46 border=0 name="13amp"><img src="images/nav/right_bg.gif" width=10 height=46 border=0></nobr></div>
+  <div id="plug" style="position:absolute; width:35; height:42; z-index:5; left: 2px; top: 2px;visibility: visible"><img src="images/nav/plug.gif" width="36" height="42" border="0" usemap="#plug"></div>
+<div id="extension" style="position:absolute; width:116; height:26; z-index:100; left: 38px; top: 10px;visibility: visible">
+	<img src="images/nav/two_colour_extension.png" width="96" height="26" alt="Two Colour Extension" usemap="#topThree" border=0>
+</div>
+  <div id="one" style="position:absolute; width:74; height:26; z-index:14; left: 123px; top: 10px;visibility: visible"> 
+    <img src="images/nav/12_grid.gif" width=74 height=26 border=0 usemap="#12_grid"> 
+  </div>
+<div id="two" style="position: absolute; width:253; height:30; z-index:10; left: 103px; top: 10px;visibility: visible"><img src="images/nav/8_grid.gif" width="252" height="30" usemap="#8_grid" border=0></div>
+<div id="three" style="position:absolute; width:363; height:34; z-index:12; left: 103px; top: 2px;visibility: visible"><img src="images/nav/last_three.gif" width=363 height=34 border=0 usemap="#last_three" alt=""></div>
+<img src="images/spacer.gif" width=100% height=1 border=0 alt="" name="w">
+<map name="8_grid">
+  <area shape="rect" coords="199,4,207,12" href="javascript:getPage(grid8,0);">
+	
+  <area shape="rect" coords="208,4,216,12" href="javascript:getPage(grid8,1);">
+	
+  <area shape="rect" coords="216,4,225,12" href="javascript:getPage(grid8,2);">
+	
+  <area shape="rect" coords="224,4,233,12" href="javascript:getPage(grid8,3);">
+    
+  <area shape="rect" coords="200,16,209,24" href="javascript:getPage(grid8,4);">
+	
+  <area shape="rect" coords="208,16,217,24" href="javascript:getPage(grid8,5);">
+	
+  <area shape="rect" coords="216,16,225,24" href="javascript:getPage(grid8,6);">
+	
+  <area shape="rect" coords="224,16,233,24" href="javascript:getPage(grid8,7);">
+</map>
+
+<map name="12_grid">
+  <area shape="rect" coords="41,1,49,9" href="javascript:getPage(grid12,0);">
+  <area shape="rect" coords="49,1,58,9" href="javascript:getPage(grid12,1);">
+  <area shape="rect" coords="58,1,67,9" href="javascript:getPage(grid12,2);">
+  <area shape="rect" coords="67,1,76,9" href="javascript:getPage(grid12,3);">
+  <area shape="rect" coords="41,9,49,17" href="javascript:getPage(grid12,4);">
+  <area shape="rect" coords="49,9,58,17" href="javascript:getPage(grid12,5);">
+  <area shape="rect" coords="58,9,67,17" href="javascript:getPage(grid12,6);">
+  <area shape="rect" coords="67,9,76,17" href="javascript:getPage(grid12,7);">
+  <area shape="rect" coords="41,17,49,25" href="javascript:getPage(grid12,8);">
+  <area shape="rect" coords="49,17,58,25" href="javascript:getPage(grid12,9);">
+  <area shape="rect" coords="58,17,67,25" href="javascript:getPage(grid12,10);">
+  <area shape="rect" coords="67,17,76,25" href="javascript:getPage(grid12,11);">
+</map> 
+<map name="last_three">
+  <area shape="rect" coords="346,18,355,27" href ="javascript:getPage(three,0);">
+  <area shape="rect" coords="355,18,364,27" href ="javascript:getPage(three,1);">
+</map> 
+<map name="plug">
+  <area shape="rect" coords="10,6,35,37" href="plug.html" target="main">
+</map> 
+<map name="topThree">
+  <area shape="rect" coords="55,2,75,24" href="8grid/sections.html" target="main">
+  <area shape="rect" coords="75,2,95,24" href="12grid/sections.html" target="main">
+</map>
+</body>
+</html>

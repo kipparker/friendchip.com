@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+
+<HTML>
+<HEAD>
+	<TITLE>Untitled</TITLE>
+<script language="javascript">
+//<!--
+if(document.images){
+   imgOn = new Image();
+   imgOn.src="images/red.gif";
+   imgOff = new Image();
+   imgOff.src="images/light_grey.gif";
+   imgVisited = new Image();
+   imgVisited.src = "images/dark_grey.gif"
+}
+
+function chngImg(number,state){
+if(parent.visitedLink[number]!= 1){
+   theImg = 'nav'+number;
+   if(state == 'off'){
+      document.images[theImg].src = imgOff.src;
+   }else if(state == 'on'){
+      document.images[theImg].src = imgOn.src;
+   }
+}
+}
+
+function fadeOut(){
+   for(i=1;i<=10;i++){
+      if(parent.visitedLink[i] == 1){
+	     document.images['nav'+i].src = imgVisited.src;
+	  }
+   }
+}
+//-->
+</script>
+</HEAD>
+
+<BODY bgcolor="#000000" background="images/bg.gif" onLoad="fadeOut();">
+<center><a href="sine.htm" target="content"><img src="images/back_button.gif" width=40 height=40 border=0 vspace="5"></a><img src="images/kraftwerk.gif" width=443 height=45 border=0 alt="KRAFTWERK"></center><br>
+<OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"
+ codebase="http://active.macromedia.com/flash2/cabs/swflash.cab#version=3,0,0,0"
+  ID=sine WIDTH=520 HEIGHT=335>
+  <PARAM NAME=movie VALUE="flash/sm_sine.swf"> 
+  <PARAM NAME=quality VALUE=high>
+  <PARAM NAME=bgcolor VALUE=#000000>
+   <PARAM NAME=play VALUE=true>
+<EMBED SRC="flash/sm_sine.swf"
+NAME=STRIP WIDTH=520 HEIGHT=335
+QUALITY=high BGCOLOR=#000000
+TYPE="application/x-shockwave-flash"
+PLAY=true
+PLUGINSPAGE="http://www.macromedia.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">
+</EMBED>
+</object>
+<Table align="center" width="100%">
+<tr>
+<td align="center">
+<a href="robots/robots.htm" onMouseout="chngImg(1,'off');" onMouseover="chngImg(1,'on');" onClick="parent.visitedLink[1] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav1"></a>
+</td>
+<td align="center">
+<a href="numbers/numbers.htm" onMouseout="chngImg(2,'off');" onMouseover="chngImg(2,'on');" onClick="parent.visitedLink[2] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav2"></a>
+</td>
+<td align="center">
+<a href="waves/fuzz.htm" onMouseout="chngImg(3,'off');" onMouseover="chngImg(3,'on');" onClick="parent.visitedLink[3] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav3"></a>
+</td>
+<td align="center">
+<a href="radio/radio.htm" onMouseout="chngImg(4,'off');" onMouseover="chngImg(4,'on');" onClick="parent.visitedLink[4] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav4"></a>
+</td>
+<td align="center">
+<a href="auto/auto.htm" onMouseout="chngImg(5,'off');" onMouseover="chngImg(5,'on');" onClick="parent.visitedLink[5] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav5"></a>
+</td>
+<td align="center">
+<a href="waves/vertical.htm" onMouseout="chngImg(6,'off');" onMouseover="chngImg(6,'on');" onClick="parent.visitedLink[6] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav6"></a>
+</td>
+<td align="center">
+<a href="calc/calc.htm" onMouseout="chngImg(7,'off');" onMouseover="chngImg(7,'on');" onClick="parent.visitedLink[7] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav7"></a>
+</td>
+<td align="center">
+<a href="waves/horizontal.htm" onMouseout="chngImg(8,'off');" onMouseover="chngImg(8,'on');" onClick="parent.visitedLink[8] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav8"></a>
+</td>
+<td align="center">
+<a href="trans/trans.htm" onMouseout="chngImg(9,'off');" onMouseover="chngImg(9,'on');" onClick="parent.visitedLink[9] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav9"></a>
+</td>
+<td align="center">
+<a href="antenna_main.htm" onMouseout="chngImg(10,'off');" onMouseover="chngImg(10,'on');" onClick="parent.visitedLink[10] = 1;"><img src="images/light_grey.gif" width=10 height=10 border=0 name="nav10"></a>
+</td>
+</tr>
+</Table>
+</BODY>
+</HTML>

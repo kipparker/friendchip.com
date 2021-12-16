@@ -1,0 +1,23 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+	<title>Quick Time</title>
+<script type="text/javascript">
+<!--
+//get the movie name
+if(document.location.href.indexOf("?")==-1){
+	document.location.href = document.location.href+"?vid=dont.mov";
+}else{
+	vid = document.location.href.substring(document.location.href.indexOf("=")+1);
+}
+//-->
+</script>
+</head>
+<body bgcolor="#FFFFFF" leftmargin="0" topmargin="0" rightmargin="0" bottommargin="0" marginwidth="0" marginheight="0">
+<script language="Javascript">
+<!-- hide from pre-script browsers
+document.write('<embed src="'+vid+'" width=256 height=210>');
+//-->
+</script>
+</body>
+</html>
