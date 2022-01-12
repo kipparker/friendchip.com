@@ -1,3 +1,6 @@
 ignore
 media
-ruffle
+
+.DS_Store
+
+.pytest_cache
