@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>datachip</title>
-    <script src="/ruffle/ruffle.js"></script>
     <style>
         html,
         body {
@@ -25,15 +24,22 @@
         }
 
         main div {
-            width: 800px;
-            height: 442px;
+            max-width: 800px;
+            max-height: 442px;
         }
 
         main div a {
             position: fixed;
             margin-left: 179px;
-            z-index:2;
-            background-color:black;
+            z-index: 2;
+            background-color: black;
+        }
+
+        @media only screen and (min-width: 740px) {
+            ruffle-player {
+                width: 800px;
+                height: 442px;
+            }
         }
     </style>
 </head>
@@ -41,8 +47,8 @@
 <body>
     <main>
         <div id="container">
-            <a href="#" onclick="this.style.display = 'none'">
-                <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="441.0px" width="441.0px"
+            <!-- <a href="#" onclick="this.style.display = 'none'">
+                <svg xmlns:xlink="http://www.w3.org/1999/xlink" height="441.0px" width="100%"
                     xmlns="http://www.w3.org/2000/svg">
                     <g transform="matrix(1.0, 0.0, 0.0, 1.0, -180.45, 0.0)">
                         <path
@@ -50,7 +56,7 @@
                             fill="#ffffff" fill-rule="evenodd" stroke="none" />
                     </g>
                 </svg>
-            </a>
+            </a> -->
         </div>
     </main>
     <script>
@@ -65,8 +71,6 @@
             const container = document.getElementById("container");
             container.appendChild(player);
             player.load("datachip.swf");
-            player.style.width = "800px";
-            player.style.height = "442px";
         });
     </script>
     <script src="../ruffle/ruffle.js"></script>
